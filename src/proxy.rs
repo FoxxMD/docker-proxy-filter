@@ -37,6 +37,11 @@ pub async fn forward(
         .await
         .map_err(web::Error::from)?;
 
+    // respond without body for /_ping HEAD request
+    if req.uri().path() == "/_ping" && req.method() == http::Method::HEAD {
+        return Ok(web::HttpResponse::build(res.status()).finish());
+    }
+
     let mut client_resp = web::HttpResponse::build(res.status());
     client_resp.content_type(res.content_type());
 
