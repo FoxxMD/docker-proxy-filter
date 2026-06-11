@@ -38,6 +38,15 @@ pub async fn forward(
         .map_err(web::Error::from)?;
 
     let mut client_resp = web::HttpResponse::build(res.status());
+
+    // respond without body for /_ping HEAD request
+    if req.uri().path() == "/_ping" && req.method() == http::Method::HEAD {
+        for (key, value) in res.headers().iter() {
+            client_resp.header(key.clone(), value.clone());
+        }
+        return Ok(client_resp.finish());
+    }
+
     client_resp.content_type(res.content_type());
 
     if res.status() == 200 {
