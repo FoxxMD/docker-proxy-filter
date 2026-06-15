@@ -185,4 +185,5 @@ All configuration is done through environmental variables.
 | `CONTAINER_NAMES`  | no       |         | A comma-delimited list of values to compare against a container name.                                                                                         |
 | `CONTAINER_LABELS` | no       |         | A comma-delimited list of key-values to compare against container labels.                                                                                     |
 | `SCRUB_ENVS`       | no       | false   | Remove `Env` list from [container inspect API](https://docs.docker.com/reference/api/engine/version/v1.48/#tag/Container/operation/ContainerInspect) response |
+| `RUST_LOG`         | no       | debug   | Logging level for the Rust application. Values: `error`, `warn`, `info`, `debug`, `trace`, `off`                                                             |
 
