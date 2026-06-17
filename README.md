@@ -95,7 +95,7 @@ services:
     image: foxxmd/docker-proxy-filter
     environment:
       - PROXY_URL=http://socket-proxy:2375
-      - CONTAINER_NAME=foo,bar
+      - CONTAINER_NAMES=foo,bar
       - SCRUB_ENVS=true
     ports:
       - 2375:2375
